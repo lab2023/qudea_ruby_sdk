@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'qudea_ruby_sdk/version'
+require 'qudea_sdk/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'qudea_ruby_sdk'
-  spec.version       = QudeaRubySDK::VERSION
+  spec.name          = 'qudea_sdk'
+  spec.version       = QudeaSDK::VERSION
   spec.authors       = ['Ismail Akbudak']
   spec.email         = ['ismail.akbudak@lab2023.com']
 

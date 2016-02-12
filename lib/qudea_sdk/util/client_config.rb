@@ -1,4 +1,4 @@
-module QudeaRubySDK
+module QudeaSDK
   module Util
     class ClientConfig
       DEFAULTS = {

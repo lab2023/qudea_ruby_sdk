@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe QudeaRubySDK do
+describe QudeaSDK do
   it 'has a version number' do
-    expect(QudeaRubySDK::VERSION).not_to be nil
+    expect(QudeaSDK::VERSION).not_to be nil
   end
 
   it 'does something useful' do

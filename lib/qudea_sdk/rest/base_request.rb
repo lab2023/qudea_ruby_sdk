@@ -1,16 +1,16 @@
-module QudeaRubySDK
+module QudeaSDK
   module REST
     class BaseRequest
 
       HTTP_HEADERS = {
           'Accept'          => 'application/json',
           'Accept-Charset'  => 'utf-8',
-          'User-Agent'      => "qudea_ruby_sdk/#{QudeaRubySDK::VERSION}" " (#{RUBY_ENGINE}/#{RUBY_PLATFORM}" " #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL})"
+          'User-Agent'      => "qudea_sdk/#{QudeaSDK::VERSION}" " (#{RUBY_ENGINE}/#{RUBY_PLATFORM}" " #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL})"
       }
 
       def initialize(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        @config = QudeaRubySDK::Util::ClientConfig.new options
+        @config = QudeaSDK::Util::ClientConfig.new options
         @token = args[0] || nil
         raise ArgumentError, 'Auth token is required' if @token.nil?
         set_up_connection
@@ -52,7 +52,7 @@ module QudeaRubySDK
           file = File.open(save_path, 'w')
           file.write(response)
         rescue => error
-          raise QudeaRubySDK::REST::SDKError.new error
+          raise QudeaSDK::REST::SDKError.new error
         ensure
           file.close unless file.nil?
         end
@@ -90,7 +90,7 @@ module QudeaRubySDK
           response = @http.request request
           @last_response = response
           if response.kind_of? Net::HTTPServerError
-            raise QudeaRubySDK::REST::ServerError
+            raise QudeaSDK::REST::ServerError
           end
         rescue
           raise if request.class == Net::HTTP::Post
@@ -107,7 +107,7 @@ module QudeaRubySDK
         end
 
         if response.kind_of? Net::HTTPClientError
-          raise QudeaRubySDK::REST::RequestError.new object['error'], object['code']
+          raise QudeaSDK::REST::RequestError.new object['error'], object['code']
         end
         object
       end

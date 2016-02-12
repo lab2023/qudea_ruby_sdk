@@ -1,4 +1,4 @@
-module QudeaRubySDK
+module QudeaSDK
   module Util
     def file_content_type(path)
       if File.exist? path
@@ -7,12 +7,12 @@ module QudeaRubySDK
         file_err  = stderr.gets
         file_out  = stdout.gets
 
-        raise QudeaRubySDK::REST::SDKError.new "The 'file' command line binary was not found." if file_err
+        raise QudeaSDK::REST::SDKError.new "The 'file' command line binary was not found." if file_err
 
         return file_out.split(';')[0].strip if file_err.nil? && (!file_out.nil? && !file_out.empty?)
       end
 
-      raise QudeaRubySDK::REST::SDKError.new 'File content type not found'
+      raise QudeaSDK::REST::SDKError.new 'File content type not found'
     end
   end
 end

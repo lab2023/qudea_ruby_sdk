@@ -1,4 +1,4 @@
-module QudeaRubySDK
+module QudeaSDK
   module REST
     class ServerError < StandardError; end
 

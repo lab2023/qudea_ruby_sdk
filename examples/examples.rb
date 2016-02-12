@@ -1,4 +1,4 @@
-require 'qudea_ruby_sdk'
+require 'qudea_sdk'
 
 token = 'your_token'
 
